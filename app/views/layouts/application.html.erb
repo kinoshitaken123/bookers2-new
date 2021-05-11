@@ -1,79 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <header>
+   <head>
+     <title>Bookers2</title>
+     <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
+
+  <body class ="header">
+    <header class ="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-       <%= link_to '/' do %>
-        <span>Bookers</span>
-       <% end %>
-        <% if user_signed_in? %>
-          <ul>
-            <li>
-            <%= link_to user_path(current_user.id) do %>
-              <span> Home</span>
+       <nav class="nav navbar-left">
+        <%= link_to '/' do %>
+         <span class="title">Bookers</span>
+       </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+             <li class="">
+              <%= link_to user_path(current_user.id), class:"btn btn-link" do %>
+              <i class="fas fa-home">Home</i>
+              <% end %>
+             </li>
+             <li class="">
+              <%= link_to users_path, class:"btn btn-link" do %>
+              <i class="fas fa-user"> Users</i>
+               <% end %>
+             </li>
+             <li class="">
+              <%= link_to books_path, class:"btn btn-link" do %>
+               <i class="fas fa-book">Books</i>
+               <% end %>
+             </li>
+             <li>
+              <%= link_to destroy_user_session_path, method: :delete,class:"btn btn-link"  do %>
+              <i class="fas fa-sign-out-alt">logout</i>
+              <% end %>
+             </li>
+            <% else %>
+             <li class="">
+               <%= link_to '/' do %>
+               <i class="fas fa-home">Home</i>
+               <% end %>
+              </li>
+              <li class="">
+                <%= link_to home_about_path, class:"btn btn-link" do %>
+                <i class="fas fa-link">About</i>
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to new_user_registration_path, class:"btn btn-link" do %>
+                <i class="fas fa-user-plus">sign up</i>
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to new_user_session_path, class:"btn btn-link" do %>
+                <i class="fas fa-sign-in-alt">login</i>
+                <% end %>
+              </li>
             <% end %>
-            </li>
-            <li>
-            <%= link_to users_path do %>
-              <span> Users</span>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to books_path do %>
-              <span> Books</span>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <span> logout</span>
-            <% end %>
-            </li>
-          </ul>
-        <% else %>
-          <ul>
-            <li>
-            <%= link_to '/' do %>
-              <span class=> Home</span>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to home_about_path do %>
-              <span> About</span>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to new_user_registration_path do %>
-              <span> sign up</span>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to new_user_session_path do %>
-              <span> login</span>
-            <% end %>
-            </li>
           </ul>
         <% end %>
-      </div>
-    </header>
+      </nav>
+     </header>
     <div class="body">
-      <div class="container">
         <p id="notice"><%= notice %></p>
-          <div class="row">
-            
+
           <%= yield %>
-          </div>
-          
+
             <footer>
               <p class="text-right"> CopyRight Infratop.inc</p>
             </footer>
-          </div>
         </div>
       </div>
     </div>
