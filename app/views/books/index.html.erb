@@ -1,11 +1,17 @@
- <h2>Books</h2>
+<!--%= render 'users/user', user: @user %>-->
+
+<h2>New book</h2>
+<%= render 'books/book', book: @book %>
+
+    <div class="col-xs-9">
+      <table class="table book-index">
+        <h2>Books</h2>
         <thead>
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
         </thead>
         <tbody>
-
           <% @books.each do |book| %>
             <tr>
               <td>
@@ -17,16 +23,6 @@
               <td><%= book.body %></td>
             </tr>
           <% end %>
-
-          <%= form_with model:@book, local:true do |f| %>
-
-           <h3>title</h3>
-           <%= f.text_field :title %>
-           <h3>body</h3>
-           <%= f.text_area :body %>
-           <%= f.submit "Create Book" %>
-          <% end %>
-
         </tbody>
       </table>
     </div>
