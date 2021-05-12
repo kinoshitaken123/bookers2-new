@@ -6,19 +6,22 @@
       <%= render 'books/book', book: @newbook %>
     </div>
 
-<p>Title: <%= @book.title %></p>
-<p>Body: <%= @book.body%></p>
-
-<h1>Book detail</h1>
+   <!-- 投稿の詳細 -->
+    <div class="col-xs-9">
+      <h1>Book detail</h1>
       <table class="table table-user-show">
         <tr>
-          <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%></td>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
           <td><%= link_to @user.name, user_path(@user) %></td>
-          <td><%= @book.title %></td>
-          <td><%= @book.body %></td>
+          <td><%= link_to @book.title,book_path(params[:id]) %></td>
+          <td><%= link_to @book.body,book_path(params[:id]) %></td>
+
           <% if @book.user_id == current_user.id %>
-           <td><%= link_to "Edit", edit_book_path(@book) %></td>
-           <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?" %></td>
+            <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success"%></td>
+            <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
           <% end %>
         </tr>
       </table>
+    </div>
+  </div>
+</div>

@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 <html>
-   <head>
-     <title>Bookers2</title>
-     <%= csrf_meta_tags %>
-     <%= csp_meta_tag %>
-
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-   </head>
-
-  <body class ="header">
-    <header class ="navbar navbar-fixed-top navbar-inverse">
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-       <nav class="nav navbar-left">
-        <%= link_to '/' do %>
-         <span class="title">Bookers</span>
-       </nav>
-        <nav>
+        <nav class="nav navbar-nav navbar-left"><a href='/'>Bookers</a></nav>
+
+        <nav class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-             <li class="">
-              <%= link_to user_path(current_user.id), class:"btn btn-link" do %>
-              <i class="fas fa-home">Home</i>
-              <% end %>
-             </li>
-             <li class="">
-              <%= link_to users_path, class:"btn btn-link" do %>
-              <i class="fas fa-user"> Users</i>
-               <% end %>
-             </li>
-             <li class="">
-              <%= link_to books_path, class:"btn btn-link" do %>
-               <i class="fas fa-book">Books</i>
-               <% end %>
-             </li>
-             <li>
-              <%= link_to destroy_user_session_path, method: :delete,class:"btn btn-link"  do %>
-              <i class="fas fa-sign-out-alt">logout</i>
-              <% end %>
-             </li>
-            <% else %>
-             <li class="">
-               <%= link_to '/' do %>
-               <i class="fas fa-home">Home</i>
-               <% end %>
-              </li>
-              <li class="">
-                <%= link_to home_about_path, class:"btn btn-link" do %>
-                <i class="fas fa-link">About</i>
-                <% end %>
-              </li>
-              <li class="">
-                <%= link_to new_user_registration_path, class:"btn btn-link" do %>
-                <i class="fas fa-user-plus">sign up</i>
-                <% end %>
-              </li>
-              <li class="">
-                <%= link_to new_user_session_path, class:"btn btn-link" do %>
-                <i class="fas fa-sign-in-alt">login</i>
-                <% end %>
-              </li>
+            <li>
+            <%= link_to user_path(current_user.id) do %>
+             <i class="fas fa-home">Home</i>
             <% end %>
+            </li>
+            <li>
+            <%= link_to users_path do %>
+             <i class="fas fa-user"> Users</i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to books_path do %>
+             <i class="fas fa-book">Books</i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+             <i class="fas fa-sign-out-alt">logout</i>
+            <% end %>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            <%= link_to '/' do %>
+             <i class="fas fa-home">Home</i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to home_about_path, class:"btn btn-link" do %>
+             <i class="fas fa-link">About</i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to new_user_registration_path do %>
+             <i class="fas fa-user-plus">sign up</i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to new_user_session_path do %>
+             <i class="fas fa-sign-in-alt">login</i>
+            <% end %>
+            </li>
           </ul>
         <% end %>
-      </nav>
-     </header>
+        </nav>
+      </div>
+    </header>
     <div class="body">
+      <div class="container">
         <p id="notice"><%= notice %></p>
-
-          <%= yield %>
-
-            <footer>
-              <p class="text-right"> CopyRight Infratop.inc</p>
-            </footer>
+          <div class="row">
+           <%= yield %>
+          </div>
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-9"><p>CpoyRight Infratop.inc</p></div>
+          </div>
         </div>
       </div>
     </div>
