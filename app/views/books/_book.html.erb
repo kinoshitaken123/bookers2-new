@@ -1,11 +1,14 @@
-<%= form_with model:book, local:true do |f| %>
+  <%= render 'books/error', model: @book %>
+
+  <%= form_with model:book, local:true do |f| %>
 
 <div class="form-group has-icon">
-  <label class="control-label">Title</label><br />
-  <%= f.text_field :title, class:"form-control", placeholder:"" %>
+   <label class="control-label">Title</label><br />
+   <%= f.text_field :title, class:"form-control", placeholder:"" %>
 </div>
-<label class="control-label">body</label><br />
-<%= f.text_area :body, class:"form-control", rows:"2", placeholder:"" %><br>
-<%= f.submit "Create Book", class:"btn btn-primary btn-block " %>
+
+ <label class="control-label">body</label><br />
+ <%= f.text_area :body, class:"form-control", rows:"2", placeholder:"" %><br>
+ <%= f.submit "Create Book", class:"btn btn-primary btn-block " %>
 <% end %>
-</div>
+

@@ -1,21 +1,18 @@
-<div class="container">
- <div class="row">
-	<div class="col-md-3">
+<div class="container px-5 px-sm-0">
+  <div class="row">
 
-		<h2>User info</h2>
-		<%= render 'users/user', user: @book.user %>
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= render 'users/user', user: @user %>
+      <h2>New book</h2>
+      <%= render 'books/book', book: @newbook %>
+    </div>
 
-		<h2>New book</h2>
-		<%= render 'books/book', book: Book.new %>
-
-	</div>
-
-   <!-- 投稿の詳細 -->
     <div class="col-md-8 offset-md-1">
       <h1>Book detail</h1>
       <table class="table table-user-show">
         <tr>
-          <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
+          <td><%= link_to attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %></td>
           <td><%= link_to @user.name, user_path(@user) %></td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
@@ -28,5 +25,6 @@
         </tr>
       </table>
     </div>
+
   </div>
 </div>
