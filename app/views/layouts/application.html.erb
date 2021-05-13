@@ -47,11 +47,13 @@
              <i class="fas fa-home">Home</i>
             <% end %>
             </li>
+
             <li>
-            <%= link_to home_about_path, class:"btn btn-link" do %>
+            <%= link_to home_about_path do %>
              <i class="fas fa-link">About</i>
             <% end %>
             </li>
+
             <li>
             <%= link_to new_user_registration_path do %>
              <i class="fas fa-user-plus">sign up</i>
@@ -73,8 +75,12 @@
           <div class="row">
            <%= yield %>
           </div>
-          <div class="row">
-            <div class="col-xs-3 col-xs-offset-9"><p>CpoyRight Infratop.inc</p></div>
+          <div class="container mt-5">
+            <div class="row">
+             <div class="mx-auto">
+              <p>CpoyRight Infratop.inc</p>
+             </div>
+            </div>
           </div>
         </div>
       </div>
