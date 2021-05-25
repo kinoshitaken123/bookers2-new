@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  config.paths.add 'lib', eager_load: true  # この行を追加
+
 
   before_action :authenticate_user!,except: [:top, :about, :public_action]
   before_action :configure_permitted_parameters, if: :devise_controller?
