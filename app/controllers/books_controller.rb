@@ -23,6 +23,7 @@ class BooksController < ApplicationController
    end
 
   def index
+    puts "123456 #{ENV['SECRET_KEY']}"
     @user = current_user
     @book = Book.new
     @books = Book.all
